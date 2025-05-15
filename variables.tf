@@ -10,6 +10,6 @@ variable "firestore_database_name" {
   type = string
 }
 
-variable "table_name" {
+variable "table_names" {
     type = list(string)
 }

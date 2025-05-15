@@ -14,8 +14,8 @@ resource "google_firestore_database" "firestore_database" {
 resource "google_firestore_document" "documents"{
   project = var.project_id
   database = google_firestore_database.firestore_database.name
-  collection = var.table_name[count.index]
-  document_id = var.table_name[count.index]
+  collection = var.table_names[count.index]
+  document_id = var.table_names[count.index]
   fields = ""
-  count = length(var.table_name)
+  count = length(var.table_names)
 }
