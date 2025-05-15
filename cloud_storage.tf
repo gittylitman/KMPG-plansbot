@@ -9,6 +9,7 @@ resource "google_storage_bucket" "storage_bucket" {
   }
 
   logging {
-cloud_storage_name    log_object_prefix = "logs/"
+    log_bucket = var.log_bucket_name
+    log_object_prefix = "logs/"
   }
 }
