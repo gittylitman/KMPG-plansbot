@@ -12,22 +12,22 @@ variable "location" {
 
 variable "firestore_database_name" {
   type = string
-  default = "try"
+  default = "kpmg"
 }
 
 variable "table_names" {
     type = list(string)
-    default = [ "try" ]
+    default = [ "kpmg" ]
 }
 
 # Cloud storage resource
 
 variable "cloud_storage_name" {
   type = string
-  default = "try"
+  default = "kpmg"
 }
 
 variable "log_bucket_name" {
   type = string
-  default = "try"
+  default = "kpmg"
 }
