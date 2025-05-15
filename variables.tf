@@ -24,7 +24,7 @@ variable "table_names" {
 
 variable "cloud_storage_name" {
   type = string
-  default = "kpmg"
+  default = "kpmg-gcs-plansbot"
 }
 
 variable "log_bucket_name" {

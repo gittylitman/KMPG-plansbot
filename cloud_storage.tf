@@ -1,4 +1,4 @@
-resource "google_storage_bucket" "bucket" {
+resource "google_storage_bucket" "storage_bucket" {
   project = var.project_id
   name = var.cloud_storage_name
   location = var.location
