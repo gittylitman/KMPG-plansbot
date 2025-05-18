@@ -27,7 +27,7 @@ variable "firestore_database_name" {
 }
 
 variable "table_names" {
-    type = list(string)
+  type = list(string)
 }
 
 # Cloud storage resource
