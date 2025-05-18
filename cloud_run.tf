@@ -13,7 +13,7 @@ resource "google_cloud_run_v2_service" "cloud_run"{
     containers {
       image = var.container_image[count.index]
     }
-    
+
     vpc_access {
       network_interfaces {
         network = var.network_name
@@ -33,4 +33,5 @@ resource "google_cloud_run_service_iam_member" "allow_unauthenticated" {
   role    = "roles/run.invoker"
   member  = "allUsers"
   count = length(var.cloud_run_name)
+  depends_on = [ google_cloud_run_v2_service.cloud_run ]
 }
