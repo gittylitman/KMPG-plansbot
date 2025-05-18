@@ -1,7 +1,7 @@
 resource "google_firestore_database" "firestore_database" {
   project = var.project_id
   name                              = var.firestore_database_name
-  location_id                       = var.location
+  location_id                       = var.region
   type                              = "FIRESTORE_NATIVE"
   app_engine_integration_mode       = "DISABLED"
   deletion_policy                   = "DELETE"
