@@ -29,7 +29,7 @@ resource "google_cloud_run_v2_service" "cloud_run"{
 
 resource "google_cloud_run_service_iam_member" "allow_unauthenticated_cloud_run" {
   service = var.cloud_run_name[count.index]
-  location = google_cloud_run_v2_service.cloud_run.location
+  location = var.location
   role    = "roles/run.invoker"
   member  = "allUsers"
   count = length(var.cloud_run_name)
