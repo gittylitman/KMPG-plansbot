@@ -2,8 +2,22 @@ variable "project_id" {
   type = string
 }
 
+variable "host_project_id" {
+  type = string
+}
+
 variable "region" {
   type = string
+}
+
+# Network resource
+
+variable "vpc_name" {
+  type = string
+}
+
+variable "subnetwork_names" {
+  type = list(string)
 }
 
 # Firestore resource
@@ -13,7 +27,7 @@ variable "firestore_database_name" {
 }
 
 variable "table_names" {
-    type = list(string)
+  type = list(string)
 }
 
 # Cloud storage resource
