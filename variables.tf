@@ -13,7 +13,7 @@ variable "region" {
   default = "me-west1"
 }
 
-# Network
+# Network resource
 
 variable "vpc_name" {
   type = string
