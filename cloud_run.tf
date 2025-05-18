@@ -3,12 +3,6 @@ data "google_service_account" "cloudrun_service_account" {
   depends_on = [ google_project_service.iam ]
 }
 
-# resource "google_project_iam_member" "service_account_role" {
-#   project = var.project_id
-#   role    = "roles/${var.role}"
-#   member  = "serviceAccount:${data.google_service_account.cloudrun_service_account.email}"
-# }
-
 resource "google_cloud_run_v2_service" "cloud_run"{
   name = var.cloud_run_name[count.index]
   location = var.location
@@ -31,4 +25,12 @@ resource "google_cloud_run_v2_service" "cloud_run"{
   }
   count = length(var.cloud_run_name)
   depends_on = [ google_project_service.cloud_run ]
+}
+
+resource "google_cloud_run_service_iam_member" "allow_unauthenticated" {
+  service = var.cloud_run_name[count.index]
+  location = google_cloud_run_v2_service.cloud_run.location
+  role    = "roles/run.invoker"
+  member  = "allUsers"
+  count = length(var.cloud_run_name)
 }

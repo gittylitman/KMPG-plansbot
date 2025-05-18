@@ -18,12 +18,6 @@ variable "service_account_name"{
   default = "kpmg-plansblot"
 }
 
-variable "role" {
-  type = string
-  default = "owner"
-}
-
-
 # front cloud run
 
 variable "front_cloud_run_name"{
