@@ -1,4 +1,4 @@
-resource "google_service_account" "cloudrun_service_account" {
+data "google_service_account" "cloudrun_service_account" {
   account_id = var.service_account_name
   depends_on = [ google_project_service.iam ]
 }
