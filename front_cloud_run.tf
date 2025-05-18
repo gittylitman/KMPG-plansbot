@@ -24,7 +24,7 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
                  time_sleep.wait_60_seconds ]
 }
 
-resource "google_cloud_run_service_iam_member" "allow_unauthenticated" {
+resource "google_cloud_run_service_iam_member" "allow_unauthenticated_front_cloud_run" {
   service = google_cloud_run_v2_service.front_cloudrun.name
   location = google_cloud_run_v2_service.front_cloudrun.location
   role    = "roles/run.invoker"

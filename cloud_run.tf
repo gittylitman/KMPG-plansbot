@@ -27,7 +27,7 @@ resource "google_cloud_run_v2_service" "cloud_run"{
   depends_on = [ google_project_service.cloud_run ]
 }
 
-resource "google_cloud_run_service_iam_member" "allow_unauthenticated" {
+resource "google_cloud_run_service_iam_member" "allow_unauthenticated_cloud_run" {
   service = var.cloud_run_name[count.index]
   location = google_cloud_run_v2_service.cloud_run.location
   role    = "roles/run.invoker"
