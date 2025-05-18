@@ -1,7 +1,7 @@
 resource "google_cloud_run_v2_service" "front_cloudrun" {
   name     = var.front_cloud_run_name
   location = var.location
-  ingress =  "internal-and-cloud-load-balancing"
+  ingress =  "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
   deletion_protection = false
 
   template {

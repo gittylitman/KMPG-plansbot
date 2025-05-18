@@ -5,7 +5,7 @@ resource "google_service_account" "cloudrun_service_account" {
 resource "google_cloud_run_v2_service" "cloud_run"{
   name = var.cloud_run_name[count.index]
   location = var.location
-  ingress = "INTERNAL"
+  ingress = "INGRESS_TRAFFIC_INTERNAL_ONLY"
   deletion_protection = false
 
   template {
