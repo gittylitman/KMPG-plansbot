@@ -3,11 +3,11 @@ data "google_service_account" "cloudrun_service_account" {
   depends_on = [ google_project_service.iam ]
 }
 
-resource "google_project_iam_member" "service_account_role" {
-  project = var.project_id
-  role    = "roles/${var.role}"
-  member  = "serviceAccount:${data.google_service_account.cloudrun_service_account.email}"
-}
+# resource "google_project_iam_member" "service_account_role" {
+#   project = var.project_id
+#   role    = "roles/${var.role}"
+#   member  = "serviceAccount:${data.google_service_account.cloudrun_service_account.email}"
+# }
 
 resource "google_cloud_run_v2_service" "cloud_run"{
   name = var.cloud_run_name[count.index]
