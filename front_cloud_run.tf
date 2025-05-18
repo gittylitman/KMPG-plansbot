@@ -1,0 +1,35 @@
+resource "google_service_account" "cloudrun_service_account" {
+  account_id = var.service_account_name
+}
+
+resource "google_cloud_run_v2_service" "front_cloudrun" {
+  name     = var.front_cloud_run_name
+  location = var.location
+  ingress =  "internal-and-cloud-load-balancing"
+  deletion_protection = false
+
+  template {
+    containers {
+      ports {
+        container_port = 80
+      }
+      image = var.front_container_image
+    }
+
+    vpc_access {
+      network_interfaces {
+        network = var.network_name
+        subnetwork = var.front_subnetwork_name
+        tags = []
+      }
+    }
+    service_account = google_service_account.cloudrun_service_account.email
+  }
+}
+
+resource "google_cloud_run_service_iam_member" "allow_unauthenticated" {
+  service = google_cloud_run_v2_service.front_cloudrun.name
+  location = google_cloud_run_v2_service.front_cloudrun.location
+  role    = "roles/run.invoker"
+  member  = "allUsers"
+}
