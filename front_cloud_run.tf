@@ -1,7 +1,3 @@
-resource "google_service_account" "cloudrun_service_account" {
-  account_id = var.service_account_name
-}
-
 resource "google_cloud_run_v2_service" "front_cloudrun" {
   name     = var.front_cloud_run_name
   location = var.location
@@ -23,7 +19,6 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
         tags = []
       }
     }
-    service_account = google_service_account.cloudrun_service_account.email
   }
 }
 
