@@ -1,6 +1,6 @@
 resource "google_cloud_run_v2_service" "front_cloudrun" {
   name     = var.front_cloud_run_name
-  location = var.location
+  location = var.region
   ingress =  "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
   deletion_protection = false
 
@@ -20,8 +20,7 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
       }
     }
   }
-  depends_on = [ google_project_service.cloud_run,
-                 time_sleep.wait_60_seconds ]
+  depends_on = [ google_project_service.cloud_run ]
 }
 
 resource "google_cloud_run_service_iam_member" "allow_unauthenticated_front_cloud_run" {
