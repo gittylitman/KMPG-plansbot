@@ -6,7 +6,7 @@ data "google_service_account" "cloudrun_service_account" {
 resource "google_project_iam_member" "service_account_role" {
   project = var.project_id
   role    = "roles/${var.role}"
-  member  = "serviceAccount:${google_service_account.cloudrun_service_account.email}"
+  member  = "serviceAccount:${data.google_service_account.cloudrun_service_account.email}"
 }
 
 resource "google_cloud_run_v2_service" "cloud_run"{
@@ -27,7 +27,7 @@ resource "google_cloud_run_v2_service" "cloud_run"{
         tags = []
       }
     }
-    service_account = google_service_account.cloudrun_service_account.email
+    service_account = data.google_service_account.cloudrun_service_account.email
   }
   count = length(var.cloud_run_name)
   depends_on = [ google_project_service.cloud_run ]
