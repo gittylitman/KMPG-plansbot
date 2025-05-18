@@ -15,7 +15,7 @@ variable "network_name"{
 
 variable "service_account_name"{
   type = string
-  default = "kpmg-plansblot@kpmg-plansbot.iam.gserviceaccount.com"
+  default = "kpmg-plansblot"
 }
 
 
