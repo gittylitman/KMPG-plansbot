@@ -10,7 +10,7 @@ variable "region" {
   type = string
 }
 
-# Network
+# Network resource
 
 variable "vpc_name" {
   type = string
