@@ -20,6 +20,7 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
       }
     }
   }
+  depends_on = [ google_api_service.cloud_run ]
 }
 
 resource "google_cloud_run_service_iam_member" "allow_unauthenticated" {

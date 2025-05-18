@@ -1,5 +1,6 @@
 resource "google_service_account" "cloudrun_service_account" {
   account_id = var.service_account_name
+  depends_on = [ google_project_service.iam ]
 }
 
 resource "google_cloud_run_v2_service" "cloud_run"{
@@ -23,4 +24,5 @@ resource "google_cloud_run_v2_service" "cloud_run"{
     service_account = google_service_account.cloudrun_service_account.email
   }
   count = length(var.cloud_run_name)
+  depends_on = [ google_api_service.cloud_run ]
 }
