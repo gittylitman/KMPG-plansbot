@@ -5,7 +5,7 @@ data "google_service_account" "cloudrun_service_account" {
 }
 
 resource "google_cloud_run_v2_service" "cloud_run"{
-  name = var.cloud_run_name[count.index]
+  name = var.cloud_run_names[count.index]
   location = var.region
   ingress = "INGRESS_TRAFFIC_INTERNAL_ONLY"
   deletion_protection = false
@@ -25,7 +25,7 @@ resource "google_cloud_run_v2_service" "cloud_run"{
     }
     service_account = data.google_service_account.cloudrun_service_account.email
   }
-  count = length(var.cloud_run_name)
+  count = length(var.cloud_run_names)
   depends_on = [ google_project_service.cloud_run ]
 }
 
@@ -34,5 +34,5 @@ resource "google_cloud_run_service_iam_member" "allow_unauthenticated_cloud_run"
   location = google_cloud_run_v2_service.cloud_run[count.index].location
   role    = "roles/run.invoker"
   member  = "allUsers"
-  count = length(var.cloud_run_name)
+  count = length(var.cloud_run_names)
 }
