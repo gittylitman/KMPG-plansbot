@@ -25,7 +25,8 @@ resource "google_cloud_run_v2_service" "cloud_run"{
     service_account = data.google_service_account.cloudrun_service_account.email
   }
   count = length(var.cloud_run_name)
-  depends_on = [ google_project_service.cloud_run ]
+  depends_on = [ google_project_service.cloud_run,
+                 google_compute_subnetwork.subnetwork ]
 }
 
 resource "google_cloud_run_service_iam_member" "allow_unauthenticated_cloud_run" {

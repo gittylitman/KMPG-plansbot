@@ -20,7 +20,8 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
       }
     }
   }
-  depends_on = [ google_project_service.cloud_run ]
+  depends_on = [ google_project_service.cloud_run,
+                 google_compute_subnetwork.subnetwork ]
 }
 
 resource "google_cloud_run_service_iam_member" "allow_unauthenticated_front_cloud_run" {
