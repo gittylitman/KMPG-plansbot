@@ -22,7 +22,7 @@ variable "vpc_name" {
 
 variable "subnetwork_names" {
     type = list(string)
-    default = ["nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front"]
+    default = ["nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front", "nec-plan-compute-proxy"]
 }
 
 # front cloud run
@@ -89,10 +89,6 @@ variable "private_key_file" {
 
 variable "cert_file" {
     type = string  
-}
-
-variable "subnet_proxy_name" {
-    type = string
 }
 
 variable "https_proxy_name" {

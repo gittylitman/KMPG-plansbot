@@ -45,7 +45,7 @@ resource "google_compute_region_ssl_certificate" "ca_cert" {
 }
 
 data "google_compute_subnetwork" "proxy_subnet" {
-  name          = var.subnet_proxy_name
+  name          = data.google_compute_subnetwork.subnetwork[3].name
   region        = var.region
   project = var.host_project_id
 }
