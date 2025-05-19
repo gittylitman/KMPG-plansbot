@@ -1,69 +1,80 @@
 variable "project_id" {
-  type = string
+    type = string
+    default = "kpmg-plansbot"
 }
 
 variable "host_project_id" {
-  type = string
+    type = string
+    default = "kpmg-plansbot"
 }
 
 variable "region" {
-  type = string
-}
-
-variable "network_name"{
-  type = string
+    type = string
+    default = "me-west1"
 }
 
 variable "service_account_name"{
-  type = string
+    type = string
+    default = "kpmg-plansblot"
 }
 
 # front cloud run
 
 variable "front_cloud_run_name"{
     type = string
+    default = "pmo-front-gcp-prod"
 }
 
 variable "front_container_image" {
-  type = string
+    type = string
+    default = "us-docker.pkg.dev/cloudrun/container/hello"
 }
 
 # cloud run
 
 variable "cloud_run_name"{
     type = list(string)
+    default = ["pmo-chat-gcp-prod","pmo-preprocess-gcp-prod"]
 }
 
 variable "container_image" {
-  type = list(string)
+    type = list(string)
+    default = ["us-docker.pkg.dev/cloudrun/container/hello","us-docker.pkg.dev/cloudrun/container/hello"]
 }
 
 # Network resource
 
 variable "vpc_name" {
-  type = string
+    type = string
+    default = "dev"
 }
 
 variable "subnetwork_names" {
-  type = list(string)
+    type = list(string)
+    default = ["nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front"]
 }
 
 # Firestore resource
 
 variable "firestore_database_name" {
-  type = string
+    type = string
+    default = "firestore-plansbot"
+
 }
 
 variable "table_names" {
-  type = list(string)
+    type = list(string)
+    default = [ "TA","TB" ]
 }
 
 # Cloud storage resource
 
 variable "cloud_storage_name" {
-  type = string
+    type = string
+    default = "csplans"
 }
 
 variable "log_bucket_name" {
-  type = string
+    type = string
+    default = "lbpalns"
 }
