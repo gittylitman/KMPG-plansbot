@@ -22,7 +22,7 @@ variable "vpc_name" {
 
 variable "subnetwork_names" {
     type = list(string)
-    default = ["nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front"]
+    default = [ "nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front" ]
 }
 
 # front cloud run
