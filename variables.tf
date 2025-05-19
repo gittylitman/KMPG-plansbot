@@ -58,23 +58,23 @@ variable "subnetwork_names" {
 
 variable "firestore_database_name" {
     type = string
-    default = "firestore-plansbot"
+    default = "firestore-plansbot1"
 
 }
 
 variable "table_names" {
     type = list(string)
-    default = [ "TA","TB" ]
+    default = [ "TA1","TB1" ]
 }
 
 # Cloud storage resource
 
 variable "cloud_storage_name" {
     type = string
-    default = "csplans"
+    default = "csplans1"
 }
 
 variable "log_bucket_name" {
     type = string
-    default = "lbpalns"
+    default = "lbpalns1"
 }
