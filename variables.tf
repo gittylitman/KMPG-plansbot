@@ -65,3 +65,51 @@ variable "cloud_storage_name" {
 variable "log_bucket_name" {
     type = string
 }
+
+# load balancer
+
+variable "neg_name" {
+    type = string
+    default = "front"
+}
+
+variable "backend_service_name" {
+    type = string
+    default = "front"
+}
+
+variable "lb_name" {
+    type = string
+    default = "lb-dev"
+}
+
+variable "cert_name" {
+    type = string
+    default = "name"
+}
+
+variable "private_key_file" {
+    type = string
+    default = "./private_key.pem"
+}
+
+variable "cert_file" {
+    type = string
+    default = "./certificate.pem"
+  
+}
+
+variable "subnet_proxy_name" {
+    type = string
+    default = "nec-plan-compute-proxy"
+}
+
+variable "https_proxy_name" {
+    type = string
+    default = "https-proxy"
+}
+
+variable "https_forwarding_rule_name" {
+    type = string
+    default = "https-rule"
+}
