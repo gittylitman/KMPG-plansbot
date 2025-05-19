@@ -21,6 +21,7 @@ resource "google_cloud_run_v2_service" "cloud_run"{
         subnetwork = data.google_compute_subnetwork.subnetwork[count.index].name
         tags = []
       }
+      egress = "ALL_TRAFFIC"
     }
     service_account = data.google_service_account.cloudrun_service_account.email
   }

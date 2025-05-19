@@ -18,6 +18,7 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
         subnetwork = data.google_compute_subnetwork.subnetwork[2].name
         tags = []
       }
+      egress = "ALL_TRAFFIC"
     }
   }
   depends_on = [ google_project_service.cloud_run ]
