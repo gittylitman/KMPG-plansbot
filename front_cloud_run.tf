@@ -1,9 +1,3 @@
-data "google_service_account" "cloudrun_service_account" {
-  project = var.project_id
-  account_id = var.service_account_name
-  depends_on = [ google_project_service.iam ]
-}
-
 resource "google_cloud_run_v2_service" "front_cloudrun" {
   name     = var.front_cloud_run_name
   location = var.region
