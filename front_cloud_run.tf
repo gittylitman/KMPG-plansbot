@@ -6,9 +6,6 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
 
   template {
     containers {
-      ports {
-        container_port = 80
-      }
       image = var.front_container_image
     }
 
