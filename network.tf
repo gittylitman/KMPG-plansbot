@@ -9,3 +9,10 @@ data "google_compute_subnetwork" "subnetwork" {
   project = var.host_project_id
   count = length(var.subnetwork_names)
 }
+
+data "google_compute_subnetwork" "subnetwork_psc" {
+  name = var.subnetwork_psc_name
+  region = var.region
+  project = var.host_project_id
+}
+
