@@ -15,13 +15,12 @@ resource "google_cloud_run_v2_service" "front_cloudrun" {
     vpc_access {
       network_interfaces {
         network = data.google_compute_network.vpc_network.name
-        subnetwork = data.google_compute_subnetwork.subnetwork[2]
+        subnetwork = data.google_compute_subnetwork.subnetwork[2].name
         tags = []
       }
     }
   }
-  depends_on = [ google_project_service.cloud_run,
-                 google_compute_subnetwork.subnetwork ]
+  depends_on = [ google_project_service.cloud_run ]
 }
 
 resource "google_cloud_run_service_iam_member" "allow_unauthenticated_front_cloud_run" {
