@@ -49,7 +49,7 @@ variable "front_container_image" {
 
 # cloud run
 
-variable "cloud_run_name"{
+variable "cloud_run_names"{
     type = list(string)
     default = ["pmo-chat-gcp-prod","pmo-preprocess-gcp-prod"]
 }
