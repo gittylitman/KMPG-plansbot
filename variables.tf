@@ -58,7 +58,7 @@ variable "subnetwork_names" {
 
 variable "firestore_database_name" {
     type = string
-    default = "firestore-plansbot1"
+    default = "firestore-plansbot2"
 
 }
 
