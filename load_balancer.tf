@@ -33,7 +33,7 @@ resource "google_compute_region_url_map" "url_map" {
   }
 }
 
-resource "google_compute_region_ssl_certificate" "default" {
+resource "google_compute_region_ssl_certificate" "ca_cert" {
   name   = var.cert_name
   region   = var.region
   private_key = file(var.private_key_file)
@@ -54,7 +54,7 @@ resource "google_compute_region_target_https_proxy" "https_proxy" {
   name            = var.https_proxy_name
   region          = var.region
   url_map         = google_compute_region_url_map.url_map.id
-  ssl_certificates = [data.google_compute_region_ssl_certificate.ca_cert.id]
+  ssl_certificates = [google_compute_region_ssl_certificate.ca_cert.id]
 }
 
 resource "google_compute_forwarding_rule" "https_forwarding_rule" {
@@ -65,5 +65,4 @@ resource "google_compute_forwarding_rule" "https_forwarding_rule" {
   port_range            = "443"
   network               = data.google_compute_network.vpc_network.name
   subnetwork            = data.google_compute_subnetwork.subnetwork[2].name
-  depends_on = [ data.google_compute_subnetwork.proxy_subnet ]
 }
