@@ -1,4 +1,3 @@
-
 resource "google_compute_global_address" "psc_internal_ip" {
   project      = var.project_id
   name         = var.internal_ip_name
