@@ -19,7 +19,6 @@ resource "google_compute_global_address" "psc_google_apis" {
   name          = "psc-google-apis"
   purpose       = "PRIVATE_SERVICE_CONNECT"
   address_type  = "INTERNAL"
-  prefix_length = 24
   network       = data.google_compute_network.vpc_network.name
 }
 
