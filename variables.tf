@@ -58,7 +58,7 @@ variable "container_image" {
 
 variable "firestore_database_name" {
     type = string
-    default = "firestore-plansbot6"
+    default = "firestore-plansbot7"
 }
 
 variable "table_names" {
@@ -87,7 +87,7 @@ variable "neg_name" {
 
 variable "backend_service_name" {
     type = string
-    default = "front"
+    default = "b-s-front"
 }
 
 variable "lb_name" {

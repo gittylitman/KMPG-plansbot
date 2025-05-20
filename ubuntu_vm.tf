@@ -32,7 +32,7 @@ resource "google_compute_instance" "ubuntu_vm"{
       vncserver
     EOT
     
-    tags = ["HTTP-CLIENT", "GNOME-VM"]
+    tags = ["HTTP-CLIENT"]
 
     service_account {
       email = google_service_account.vm_instance_service_account.email
