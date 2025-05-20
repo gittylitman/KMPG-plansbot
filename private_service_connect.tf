@@ -31,7 +31,6 @@ resource "google_compute_global_forwarding_rule" "psc_endpoint" {
   network               = data.google_compute_network.vpc_network.id
   ip_address            = google_compute_global_address.psc_internal_ip.self_link
   load_balancing_scheme = "" 
-  ip_protocol           = "TCP" 
 }
 
 resource "google_dns_managed_zone" "private_googleapis_zone" {
