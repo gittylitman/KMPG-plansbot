@@ -83,3 +83,10 @@ variable "log_bucket_name" {
     type = string
     default = "lbpalns1-1"
 }
+
+# private service connect resource
+
+variable "google_api_hostnames_for_psc" {
+  type = list(string)
+  default = [ "europe-west1-aiplatform.googleapis.com", "europe-west1-aiplatform.p.googleapis.com", "firestore.googleapis.com", "me-west1-aiplatform.googleapis.com" ]
+}
