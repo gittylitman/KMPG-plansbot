@@ -31,12 +31,8 @@ resource "google_compute_instance" "ubuntu_vm"{
       chmod +x ~/.vnc/xstartup
       vncserver
     EOT
-
-    tags = {
-      Name        = "HTTP-CLIENT-VM"
-      NetworkTag  = "HTTP-CLIENT"
-      GNOME       = "GNOME-VM"
-    } 
+    
+    tags = ["HTTP-CLIENT", "GNOME-VM"]
 
     service_account {
       email = google_service_account.vm_instance_service_account.email
