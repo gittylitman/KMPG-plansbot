@@ -92,7 +92,7 @@ variable "backend_service_name" {
 
 variable "lb_name" {
     type = string
-    default = "lb-dev"
+    default = "lb-dev-new"
 }
 
 variable "cert_name" {
