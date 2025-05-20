@@ -139,7 +139,7 @@ variable "machine_type" {
 
 variable "zone" {
     type = string
-    default = "a"
+    default = "me-west1-a"
 }
 
 variable "image" {
