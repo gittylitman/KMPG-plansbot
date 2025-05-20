@@ -98,3 +98,30 @@ variable "https_proxy_name" {
 variable "https_forwarding_rule_name" {
     type = string
 }
+
+# ubuntu vm
+
+variable "service_account_vm_name" {
+    type = string
+    default = "ubuntu-vm-sa"
+}
+
+variable "vm_name" {
+    type = string
+    default = "ubuntu_vm"
+}
+
+variable "machine_type" {
+    type = string
+    default = "e2-standard-4"
+}
+
+variable "zone" {
+    type = string
+    default = "a"
+}
+
+variable "image" {
+    type = string
+    default = "ubuntu-2004-focal-v20250213"
+}
