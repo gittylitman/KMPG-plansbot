@@ -22,7 +22,7 @@ variable "vpc_name" {
 
 variable "subnetwork_names" {
     type = list(string)
-    default = ["nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front"]
+    default = [ "nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front" ]
 }
 
 # front cloud run
@@ -49,7 +49,6 @@ variable "container_image" {
 
 variable "firestore_database_name" {
     type = string
-
 }
 
 variable "table_names" {
@@ -63,6 +62,40 @@ variable "cloud_storage_name" {
 }
 
 variable "log_bucket_name" {
+    type = string
+}
+
+# load balancer
+
+variable "neg_name" {
+    type = string
+}
+
+variable "backend_service_name" {
+    type = string
+}
+
+variable "lb_name" {
+    type = string
+}
+
+variable "cert_name" {
+    type = string
+}
+
+variable "private_key_file" {
+    type = string
+}
+
+variable "cert_file" {
+    type = string  
+}
+
+variable "https_proxy_name" {
+    type = string
+}
+
+variable "https_forwarding_rule_name" {
     type = string
 }
 
