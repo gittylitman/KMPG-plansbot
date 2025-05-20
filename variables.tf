@@ -119,3 +119,26 @@ variable "https_forwarding_rule_name" {
     type = string
     default = "https-rule"
 }
+
+# Private service connect resource
+
+variable "internal_ip_name" {
+  type = string
+}
+
+variable "ip_address" {
+  type = string
+}
+
+variable "psc_endpoint_name" {
+  type = string
+}
+
+variable "googleapis_zone_name" {
+  type = string
+}
+
+variable "google_api_hostnames_for_psc" {
+  type = list(string)
+  default = [ "europe-west1-aiplatform.googleapis.com.", "europe-west1-aiplatform.p.googleapis.com.", "firestore.googleapis.com.", "me-west1-aiplatform.googleapis.com." ]
+}
