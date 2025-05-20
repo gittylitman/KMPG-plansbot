@@ -9,7 +9,7 @@ resource "google_compute_forwarding_rule" "psc_google_apis" {
   name                  = "pscpmo" 
   region                = "me-west1"
   load_balancing_scheme = ""
-  target                = "all-apis"
+  target                = "googleapis.googleapis.com" 
   network               = data.google_compute_network.vpc_network.id
   ip_address            = google_compute_address.psc_ip.id
 }

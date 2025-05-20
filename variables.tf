@@ -39,7 +39,7 @@ variable "subnetwork_psc_name" {
 
 variable "front_cloud_run_name"{
     type = string
-    default = "pmo-front-gcp-prod"
+    default = "pmo-front-gcp-prod-1"
 }
 
 variable "front_container_image" {
@@ -51,7 +51,7 @@ variable "front_container_image" {
 
 variable "cloud_run_names"{
     type = list(string)
-    default = ["pmo-chat-gcp-prod","pmo-preprocess-gcp-prod"]
+    default = ["pmo-chat-gcp-prod-1","pmo-preprocess-gcp-prod-1"]
 }
 
 variable "container_image" {
@@ -63,23 +63,23 @@ variable "container_image" {
 
 variable "firestore_database_name" {
     type = string
-    default = "firestore-plansbot1"
+    default = "firestore-plansbot1-1"
 
 }
 
 variable "table_names" {
     type = list(string)
-    default = [ "TA1","TB1" ]
+    default = [ "TA111","TB111" ]
 }
 
 # Cloud storage resource
 
 variable "cloud_storage_name" {
     type = string
-    default = "csplans1"
+    default = "csplans1-1"
 }
 
 variable "log_bucket_name" {
     type = string
-    default = "lbpalns1"
+    default = "lbpalns1-1"
 }
