@@ -45,6 +45,8 @@ resource "google_dns_managed_zone" "private_googleapis_zone" {
       network_url = data.google_compute_network.vpc_network.id
     }
   }
+
+  depends_on = [ google_project_service.dns ]
 }
 
 resource "google_dns_record_set" "wildcard_googleapis_a_record" {
