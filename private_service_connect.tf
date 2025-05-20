@@ -15,13 +15,9 @@
 # }
 
 
-resource "google_compute_forwarding_rule" "psc_google_apis" {
+resource "google_compute_global_forwarding_rule" "psc_google_apis" {
   name                    = "psc-google-apis"
-  load_balancing_scheme   = "INTERNAL"
   target                  = "all-apis" # Built-in
-  network                 = data.google_compute_network.vpc_network.name
-  subnetwork              = data.google_compute_subnetwork.subnetwork[2].name
-  ports                   = ["443"]
-  region                  = var.region
-  allow_psc_global_access = false
+  load_balancing_scheme   = "INTERNAL_SELF_MANAGED"
+  network                 = data.google_compute_network.vpc_network.name  
 }
