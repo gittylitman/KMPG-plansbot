@@ -84,7 +84,27 @@ variable "log_bucket_name" {
     default = "lbpalns1-1"
 }
 
-# private service connect resource
+# Private service connect resource
+
+variable "internal_ip_name" {
+  type = string
+  default = "ipname"
+}
+
+variable "ip_address" {
+  type = string
+  default = "10.0.7.5"
+}
+
+variable "psc_endpoint_name" {
+  type = string
+  default = "psc-endpoint-name"
+}
+
+variable "googleapis_zone_name" {
+  type = string
+  default = "googleapis-zone-name"
+}
 
 variable "google_api_hostnames_for_psc" {
   type = list(string)
