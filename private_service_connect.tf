@@ -14,14 +14,6 @@
 #   ip_address            = google_compute_address.psc_ip.id
 # }
 
-resource "google_compute_address" "psc_google_apis" {
-  name         = "psc-google-apis"
-  purpose      = "PRIVATE_SERVICE_CONNECT"
-  address_type = "INTERNAL"
-  region       = var.region
-  subnetwork   = data.google_compute_subnetwork.subnetwork[2].name
-  network      = data.google_compute_network.vpc_network.name
-}
 
 resource "google_compute_forwarding_rule" "psc_google_apis" {
   name                    = "psc-google-apis"
@@ -29,7 +21,6 @@ resource "google_compute_forwarding_rule" "psc_google_apis" {
   target                  = "all-apis" # Built-in
   network                 = data.google_compute_network.vpc_network.name
   subnetwork              = data.google_compute_subnetwork.subnetwork[2].name
-  ip_address              = google_compute_address.psc_google_apis.address
   ports                   = ["443"]
   region                  = var.region
   allow_psc_global_access = false
