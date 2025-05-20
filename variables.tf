@@ -129,7 +129,7 @@ variable "service_account_vm_name" {
 
 variable "vm_name" {
     type = string
-    default = "ubuntu_vm"
+    default = "ubuntu"
 }
 
 variable "machine_type" {
