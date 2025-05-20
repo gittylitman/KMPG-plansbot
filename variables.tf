@@ -58,7 +58,7 @@ variable "container_image" {
 
 variable "firestore_database_name" {
     type = string
-    default = "firestore-plansbot5"
+    default = "firestore-plansbot6"
 }
 
 variable "table_names" {
