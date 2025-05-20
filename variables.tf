@@ -98,7 +98,7 @@ variable "ip_address" {
 
 variable "psc_endpoint_name" {
   type = string
-  default = "psc-endpoint-name"
+  default = "pscendpointname"
 }
 
 variable "googleapis_zone_name" {
