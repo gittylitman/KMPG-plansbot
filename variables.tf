@@ -25,10 +25,6 @@ variable "subnetwork_names" {
     default = ["nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front"]
 }
 
-variable "subnetwork_psc_name" {
-  type = string
-}
-
 # front cloud run
 
 variable "front_cloud_run_name"{
