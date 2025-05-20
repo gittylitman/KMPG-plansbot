@@ -9,6 +9,10 @@ provider "google" {
   project = var.project_id
 }
 
+data "google_project" "project" {
+  project_id = var.project_id
+}
+
 resource "google_project_service" "iam" {
   project = var.project_id
   service = "iam.googleapis.com"
@@ -37,6 +41,15 @@ resource "google_project_service" "dns" {
   project = var.project_id
   service = "dns.googleapis.com"
   disable_on_destroy = false 
+}
+
+resource "google_project_iam_binding" "binding_project" {
+  project = var.host_project_id
+  role = "roles/compute.networkUser"
+  members = [
+      "serviceAccount:service-${data.google_project.project.number}@serverless-robot-prod.iam.gserviceaccount.com",
+  ]
+  depends_on = [ google_project_service.iam ]
 }
 
 data "google_service_account" "cloudrun_service_account" {
