@@ -24,28 +24,13 @@ resource "google_compute_instance" "ubuntu_vm"{
     metadata_startup_script = <<-EOF
     #!/bin/bash
     apt update && apt upgrade -y
-    apt install -y ubuntu-gnome-desktop tightvncserver
 
-    # יצירת יוזר וסיסמה ל־VNC
-    mkdir -p /home/ubuntu/.vnc
-    echo "123456" | vncpasswd -f > /home/ubuntu/.vnc/passwd
-    chmod 600 /home/ubuntu/.vnc/passwd
-    chown -R ubuntu:ubuntu /home/ubuntu/.vnc
+    # התקנת סביבת GNOME ושרת XRDP
+    DEBIAN_FRONTEND=noninteractive apt install -y ubuntu-gnome-desktop xrdp
 
-    # יצירת סקריפט xstartup
-    cat <<EOT > /home/ubuntu/.vnc/xstartup
-    #!/bin/sh
-    export XKL_XMODMAP_DISABLE=1
-    unset SESSION_MANAGER
-    unset DBUS_SESSION_BUS_ADDRESS
-    gnome-session &
-    EOT
-
-    chmod +x /home/ubuntu/.vnc/xstartup
-    chown ubuntu:ubuntu /home/ubuntu/.vnc/xstartup
-
-    # הרצת VNC כמשתמש ubuntu
-    su - ubuntu -c "vncserver :1"
+    # הפעלת שירות XRDP
+    systemctl enable xrdp
+    systemctl start xrdp
     EOF
 
     service_account {
