@@ -8,6 +8,7 @@ resource "google_compute_instance" "ubuntu_vm"{
     name = var.vm_name
     machine_type = var.machine_type
     zone = var.zone
+    tags = ["http-client"]
     
     boot_disk {
       initialize_params {
@@ -20,19 +21,32 @@ resource "google_compute_instance" "ubuntu_vm"{
        subnetwork = data.google_compute_subnetwork.subnetwork[2].name
     }
 
-    metadata_startup_script = <<-EOT
-      #!/bin/bash
-      sudo apt update && sudo apt upgrade -y
-      sudo apt install -y ubuntu-gnome-desktop
-      sudo apt install -y tightvncserver
-      echo "your_password" | vncpasswd -f > ~/.vnc/passwd
-      chmod 600 ~/.vnc/passwd
-      echo "gnome-session &" > ~/.vnc/xstartup
-      chmod +x ~/.vnc/xstartup
-      vncserver
+    metadata_startup_script = <<-EOF
+    #!/bin/bash
+    apt update && apt upgrade -y
+    apt install -y ubuntu-gnome-desktop tightvncserver
+
+    # יצירת יוזר וסיסמה ל־VNC
+    mkdir -p /home/ubuntu/.vnc
+    echo "123456" | vncpasswd -f > /home/ubuntu/.vnc/passwd
+    chmod 600 /home/ubuntu/.vnc/passwd
+    chown -R ubuntu:ubuntu /home/ubuntu/.vnc
+
+    # יצירת סקריפט xstartup
+    cat <<EOT > /home/ubuntu/.vnc/xstartup
+    #!/bin/sh
+    export XKL_XMODMAP_DISABLE=1
+    unset SESSION_MANAGER
+    unset DBUS_SESSION_BUS_ADDRESS
+    gnome-session &
     EOT
-    
-    tags = ["http-client", "gnome-vm"]
+
+    chmod +x /home/ubuntu/.vnc/xstartup
+    chown ubuntu:ubuntu /home/ubuntu/.vnc/xstartup
+
+    # הרצת VNC כמשתמש ubuntu
+    su - ubuntu -c "vncserver :1"
+    EOF
 
     service_account {
       email = google_service_account.vm_instance_service_account.email
