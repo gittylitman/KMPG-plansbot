@@ -129,7 +129,7 @@ variable "internal_ip_name" {
 
 variable "ip_address" {
   type = string
-  default ="10.0.7.4/32"
+  default ="10.0.7.5"
 }
 
 variable "psc_endpoint_name" {
