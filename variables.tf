@@ -87,7 +87,7 @@ variable "neg_name" {
 
 variable "backend_service_name" {
     type = string
-    default = "lb-dev"
+    default = "front1"
 }
 
 variable "lb_name" {
@@ -97,17 +97,17 @@ variable "lb_name" {
 
 variable "cert_name" {
     type = string
-    default = "./private_key.pem"
+    default = "cert"
 }
 
 variable "private_key_file" {
     type = string
-    default = "./certificate.pem"
+    default = "./private_key.pem"
 }
 
 variable "cert_file" {
     type = string  
-    default = "nec-plan-compute-proxy"
+    default = "./certificate.pem"
 }
 
 variable "https_proxy_name" {
