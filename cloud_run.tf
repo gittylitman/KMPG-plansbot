@@ -12,7 +12,7 @@ resource "google_cloud_run_v2_service" "cloud_run"{
     vpc_access {
       network_interfaces {
         network = data.google_compute_network.vpc_network.name
-        subnetwork = data.google_compute_subnetwork.subnetwork.name
+        subnetwork = data.google_compute_subnetwork.subnetwork[0].name
         tags = []
       }
       egress = "ALL_TRAFFIC"
