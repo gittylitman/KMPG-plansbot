@@ -82,17 +82,17 @@ variable "log_bucket_name" {
 
 variable "neg_name" {
     type = string
-    default = "front1"
+    default = "neg-front"
 }
 
 variable "backend_service_name" {
     type = string
-    default = "front1"
+    default = "neg-front"
 }
 
 variable "lb_name" {
     type = string
-    default = "lb"
+    default = "name-lb-new"
 }
 
 variable "cert_name" {
@@ -129,7 +129,7 @@ variable "internal_ip_name" {
 
 variable "ip_address" {
   type = string
-  default = "10.0.1.0/26"
+  default = "10.0.1.1"
 }
 
 variable "psc_endpoint_name" {
