@@ -1,5 +1,5 @@
 resource "google_cloud_run_v2_service" "front_cloudrun" {
-  name     = var.front_cloud_run_name
+  name     = "${var.project_name}-front-crun-${var.environment}"
   location = var.region
   ingress =  "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
   deletion_protection = false
