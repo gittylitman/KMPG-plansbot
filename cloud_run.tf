@@ -1,5 +1,5 @@
 resource "google_cloud_run_v2_service" "cloud_run"{
-  name = var.cloud_run_name
+  name = "${var.project_name}-crun-${var.environment}"
   location = var.region
   ingress = "INGRESS_TRAFFIC_INTERNAL_ONLY"
   deletion_protection = false

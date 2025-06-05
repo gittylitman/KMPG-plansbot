@@ -1,6 +1,6 @@
 resource "google_compute_global_address" "psc_internal_ip" {
   project      = var.project_id
-  name         = var.internal_ip_name
+  name         = "${var.project_name}-internal-ip-${var.environment}"
   address_type = "INTERNAL"
   purpose      = "PRIVATE_SERVICE_CONNECT"
   network      = data.google_compute_network.vpc_network.id
@@ -9,7 +9,7 @@ resource "google_compute_global_address" "psc_internal_ip" {
 
 resource "google_compute_global_forwarding_rule" "psc_endpoint" {
   project               = var.project_id
-  name                  = var.psc_endpoint_name
+  name                  = "${var.project_name}-psc-${var.environment}"
   target                = "all-apis"
   network               = data.google_compute_network.vpc_network.id
   ip_address            = google_compute_global_address.psc_internal_ip.self_link
@@ -18,7 +18,7 @@ resource "google_compute_global_forwarding_rule" "psc_endpoint" {
 
 resource "google_dns_managed_zone" "private_googleapis_zone" {
   project     = var.project_id
-  name        = var.googleapis_zone_name
+  name        = "${var.project_name}-googleapis-zone-${var.environment}"
   dns_name    = "googleapis.com."           
   description = "Private DNS zone for googleapis.com to route via PSC"
   visibility  = "private"

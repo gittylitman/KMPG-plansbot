@@ -1,6 +1,6 @@
 resource "google_storage_bucket" "storage_bucket" {
   project = var.project_id
-  name = var.cloud_storage_name
+  name = "${var.project_name}-gcs-${var.environment}"
   location = var.region
   uniform_bucket_level_access = true
 
@@ -9,7 +9,7 @@ resource "google_storage_bucket" "storage_bucket" {
   }
 
   logging {
-    log_bucket = var.log_bucket_name
+    log_bucket = "${var.project_name}-gcs-log-${var.environment}"
     log_object_prefix = "logs/"
   }
 }
