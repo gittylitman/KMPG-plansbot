@@ -58,5 +58,5 @@ resource "google_compute_forwarding_rule" "https_forwarding_rule" {
   target                = google_compute_region_target_https_proxy.https_proxy.self_link
   port_range            = "443"
   network               = data.google_compute_network.vpc_network.name
-  subnetwork            = data.google_compute_subnetwork.subnetwork[2].name
+  subnetwork            = data.google_compute_subnetwork.subnetwork[1].name
 }

@@ -22,7 +22,7 @@ variable "vpc_name" {
 
 variable "subnetwork_names" {
     type = list(string)
-    default = [ "nec-plan-compute-back", "nec-plan-compute-preprocess", "nec-plan-compute-front" ]
+    default = [ "nec-plan-compute-back" , "nec-plan-compute-front" ]
 }
 
 # front cloud run
@@ -37,12 +37,12 @@ variable "front_container_image" {
 
 # cloud run
 
-variable "cloud_run_names"{
-    type = list(string)
+variable "cloud_run_name"{
+    type = string
 }
 
 variable "container_image" {
-    type = list(string)
+    type = string
 }
 
 # Firestore resource
