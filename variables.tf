@@ -79,23 +79,11 @@ variable "lb_name" {
     type = string
 }
 
-variable "cert_name" {
+variable "http_proxy_name" {
     type = string
 }
 
-variable "private_key_file" {
-    type = string
-}
-
-variable "cert_file" {
-    type = string  
-}
-
-variable "https_proxy_name" {
-    type = string
-}
-
-variable "https_forwarding_rule_name" {
+variable "http_forwarding_rule_name" {
     type = string
 }
 
