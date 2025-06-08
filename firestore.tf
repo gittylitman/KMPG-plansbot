@@ -1,10 +1,9 @@
 resource "google_firestore_database" "firestore_database" {
   project = var.project_id
-  name                              = var.firestore_database_name
+  name                              = "${var.project_name}-database-${var.environment}"
   location_id                       = var.region
   type                              = "FIRESTORE_NATIVE"
   app_engine_integration_mode       = "DISABLED"
-  deletion_policy                   = "DELETE"
   depends_on = [
     google_project_service.cloudresourcemanager,
     google_project_service.firestore

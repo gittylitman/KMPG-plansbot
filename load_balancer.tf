@@ -1,5 +1,5 @@
 resource "google_compute_region_network_endpoint_group" "serverless_neg" {
-  name                  = var.neg_name
+  name                  = "${var.project_name}-neg-${var.environment}"
   region                = var.region
   network_endpoint_type = "SERVERLESS"
   cloud_run {
@@ -8,7 +8,7 @@ resource "google_compute_region_network_endpoint_group" "serverless_neg" {
 }
 
 resource "google_compute_region_backend_service" "backend_service" {
-  name                  = var.backend_service_name
+  name                  = "${var.project_name}-backend-service-${var.environment}"
   region                = var.region
   load_balancing_scheme = "INTERNAL_MANAGED"
   protocol              = "HTTP"
@@ -18,7 +18,7 @@ resource "google_compute_region_backend_service" "backend_service" {
 }
 
 resource "google_compute_region_url_map" "url_map" {
-  name   = var.lb_name
+  name   = "${var.project_name}-lb-${var.environment}"
   region = var.region
   default_service = google_compute_region_backend_service.backend_service.id
 
@@ -34,13 +34,13 @@ resource "google_compute_region_url_map" "url_map" {
 }
 
 resource "google_compute_region_target_http_proxy" "http_proxy" {
-  name            = var.http_proxy_name
+  name            = "${var.project_name}-http-proxy-${var.environment}"
   region          = var.region
   url_map         = google_compute_region_url_map.url_map.id
 }
 
 resource "google_compute_forwarding_rule" "http_forwarding_rule" {
-  name                  = var.http_forwarding_rule_name
+  name                  = "${var.project_name}-forwarding-rule-${var.environment}"
   region                = var.region
   load_balancing_scheme = "INTERNAL_MANAGED"
   target                = google_compute_region_target_http_proxy.http_proxy.self_link
